@@ -1,0 +1,65 @@
+Swap (ft_swap)
+
+La fonction ft_swap est utilisée pour échanger les positions des deux premiers éléments au sommet de la pile donnée. C'est l'une des opérations de base dans le tri push_swap.
+
+    Paramètres :
+        t_stack **head : Un pointeur vers le pointeur de tête de la pile. Cela permet de modifier directement la pile.
+        int abr : Un indicateur pour savoir sur quelle pile l'opération est effectuée (1 pour sa, 2 pour sb).
+
+    Processus :
+        Les deux premiers éléments de la pile sont stockés dans tmp1 et tmp2.
+        Le pointeur next de tmp1 (premier élément) est mis à pointer vers le troisième élément de la pile.
+        Le pointeur next de tmp2 (deuxième élément) est mis à pointer vers tmp1, inversant ainsi leurs positions.
+        tmp2 devient la nouvelle tête de la pile (*head).
+        En fonction de abr, un message est affiché pour indiquer l'opération effectuée (sa ou sb).
+
+Push (ft_push)
+
+ft_push déplace le premier élément d'une pile vers le sommet d'une autre pile. Cette fonction est cruciale pour réarranger les éléments entre les deux piles du jeu.
+
+    Paramètres :
+        t_stack **a et t_stack **b : Les têtes des deux piles entre lesquelles les éléments seront déplacés.
+        int ab : Indique la direction du mouvement (1 pour pa, 2 pour pb).
+
+    Processus :
+        Un nouvel élément pushed est créé avec la valeur du sommet de la pile a.
+        Si la pile b est vide, pushed devient la nouvelle tête.
+        Sinon, pushed est ajouté au sommet de la pile b.
+        Le sommet de la pile a est supprimé, réduisant ainsi la pile a d'un élément.
+        Un message (pa ou pb) est affiché selon la valeur de ab.
+
+Rotate (ft_rotate)
+
+La fonction ft_rotate fait monter tous les éléments d'une pile d'une position, le premier élément devenant le dernier.
+
+    Paramètres :
+        t_stack **head : La tête de la pile à modifier.
+        int abr : Indique la pile concernée (1 pour ra, 2 pour rb).
+
+    Processus :
+        Trouver le dernier élément de la pile.
+        Faire pointer le dernier élément vers le premier, formant ainsi un cycle.
+        Mettre à jour la tête de la pile pour pointer vers le deuxième élément.
+        Rompre le cycle en mettant le next du désormais dernier élément (anciennement premier) à NULL.
+        Afficher l'opération effectuée (ra ou rb).
+
+Reverse Rotate (ft_rev_rotate)
+
+ft_rev_rotate est l'opération inverse de rotate, faisant descendre tous les éléments d'une position, le dernier élément devenant le premier.
+
+    Paramètres :
+        Identiques à ft_rotate.
+
+    Processus :
+        Parcourir la pile pour trouver le dernier élément (tail) et l'avant-dernier élément (futuretail).
+        Faire pointer le dernier élément vers le premier, le plaçant au sommet de la pile.
+        Mettre futuretail->next à NULL pour marquer la fin de la pile.
+        Afficher l'opération effectuée (rra ou rrb).
+
+Double Rotate et Reverse Double Rotate (ft_rr, ft_rrr)
+
+Ces fonctions appliquent respectivement ft_rotate et ft_rev_rotate simultanément aux deux piles A et B, optimisant le nombre de mouvements nécessaires pour un tri conjoint.
+
+    ft_rr: Applique un rotate à la fois à A et à B, puis affiche rr.
+    ft_rrr: Applique un reverse rotate à la fois à A et à B, puis affiche rrr.
+
